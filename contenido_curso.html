@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programa del Curso – Comunicación y Documentación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B2A4A;
+      --gold:    #C9A84C;
+      --cream:   #F7F4EF;
+      --white:   #FFFFFF;
+      --gray:    #6B7280;
+      --light:   #EDE9E1;
+      --accent:  #2D5FA6;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.65;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 72px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(201,168,76,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2; max-width: 720px; margin: 0 auto 22px;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,.65); font-size: .97rem; max-width: 560px; margin: 0 auto;
+    }
+    .gold-bar {
+      width: 56px; height: 3px; background: var(--gold);
+      margin: 32px auto 0; border-radius: 2px;
+    }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 1060px; margin: 0 auto; padding: 0 24px 80px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .block-title {
+      display: flex; align-items: center; gap: 14px;
+      margin: 56px 0 28px;
+    }
+    .block-title .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; color: var(--gold); line-height: 1;
+      min-width: 48px;
+    }
+    .block-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--navy);
+      border-bottom: 2px solid var(--gold); padding-bottom: 4px;
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      border-left: 4px solid var(--gold);
+      padding: 22px 22px 20px;
+      box-shadow: 0 2px 8px rgba(27,42,74,.07);
+    }
+    .card h3 {
+      font-size: .85rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .card ul {
+      list-style: none; padding: 0;
+    }
+    .card ul li {
+      font-size: .9rem; color: #374151;
+      padding: 5px 0; border-bottom: 1px solid var(--light);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .card ul li:last-child { border-bottom: none; }
+    .card ul li::before {
+      content: '›'; color: var(--gold); font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── WIDE CARD (single column) ── */
+    .card-wide {
+      background: var(--white);
+      border-radius: 10px;
+      border-top: 4px solid var(--accent);
+      padding: 24px 26px;
+      box-shadow: 0 2px 8px rgba(27,42,74,.07);
+      margin-bottom: 18px;
+    }
+    .card-wide h3 {
+      font-size: .85rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .pill-row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .pill {
+      background: var(--light); color: var(--navy);
+      font-size: .82rem; font-weight: 500;
+      border-radius: 20px; padding: 5px 14px;
+    }
+    .pill.accent { background: var(--accent); color: #fff; }
+    .pill.gold   { background: var(--gold);   color: #fff; }
+
+    /* ── TWO-COL LIST ── */
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    @media(max-width:540px){ .two-col { grid-template-columns: 1fr; } }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--light); margin: 48px 0 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.5);
+      text-align: center; padding: 28px 20px;
+      font-size: .8rem; letter-spacing: .04em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-eyebrow">Programa Académico</p>
+  <h1>Comunicación, Redacción y Documentación Organizacional</h1>
+  <p class="hero-sub">Dominio del lenguaje escrito, normativa técnica colombiana y producción de documentos profesionales.</p>
+  <div class="gold-bar"></div>
+</header>
+
+<div class="wrapper">
+
+  <!-- BLOQUE 1: FUNDAMENTOS DEL LENGUAJE -->
+  <div class="block-title">
+    <span class="num">01</span>
+    <h2>Fundamentos del Lenguaje</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Ortografía y Uso</h3>
+      <ul>
+        <li>Uso de mayúsculas y minúsculas</li>
+        <li>Reglas ortográficas</li>
+        <li>Firma digital</li>
+        <li>Manejo de Word y conversión de documentos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Gramática</h3>
+      <ul>
+        <li>Concepto, categorías y estructura</li>
+        <li>Sintaxis: orden y relación de palabras en la oración</li>
+        <li>La oración lógica y gramatical</li>
+        <li>Clases de oraciones</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Puntuación y Conectores</h3>
+      <ul>
+        <li>Signos de puntuación: concepto, signos y finalidad</li>
+        <li>Conectores lógicos y su uso</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BLOQUE 2: REDACCIÓN Y PÁRRAFO -->
+  <div class="block-title">
+    <span class="num">02</span>
+    <h2>El Párrafo y la Redacción</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>El Párrafo</h3>
+      <ul>
+        <li>Concepto</li>
+        <li>Estructura</li>
+        <li>Características y cualidades</li>
+        <li>Clases y tipos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Redacción</h3>
+      <ul>
+        <li>Concepto</li>
+        <li>Tipos de redacción</li>
+        <li>Técnicas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Tipos de Texto</h3>
+      <ul>
+        <li>Narrativo</li>
+        <li>Explicativo</li>
+        <li>Informativo</li>
+        <li>Argumentativo</li>
+        <li>Descriptivo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BLOQUE 3: COMUNICACIÓN -->
+  <div class="block-title">
+    <span class="num">03</span>
+    <h2>Clases de Comunicación</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Comunicación Interna</h3>
+      <ul>
+        <li>Formal – Vertical ascendente</li>
+        <li>Formal – Vertical descendente</li>
+        <li>Informal</li>
+        <li>Horizontal</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Comunicación Externa</h3>
+      <ul>
+        <li>Concepto</li>
+        <li>Medios de comunicación</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BLOQUE 4: PAPELERÍA Y NORMAS -->
+  <div class="block-title">
+    <span class="num">04</span>
+    <h2>Papelería y Normas Técnicas</h2>
+  </div>
+  <div class="card-wide">
+    <h3>Papelería</h3>
+    <div class="pill-row">
+      <span class="pill">Concepto y clasificación</span>
+      <span class="pill">Normas técnicas para papel y formatos</span>
+      <span class="pill">Permeabilidad y durabilidad</span>
+      <span class="pill">Información y documentos (NTC)</span>
+    </div>
+  </div>
+  <div class="card-wide">
+    <h3>GTC 185 – Aspectos Generales</h3>
+    <div class="pill-row">
+      <span class="pill accent">Denominaciones femeninas y profesionales</span>
+      <span class="pill accent">Abreviaturas</span>
+      <span class="pill accent">Visto bueno</span>
+      <span class="pill accent">Escritura de números</span>
+      <span class="pill accent">Términos y definiciones</span>
+      <span class="pill accent">Ergonomía</span>
+    </div>
+  </div>
+  <div class="card-wide">
+    <h3>Carta – Requisitos y Estructura</h3>
+    <div class="pill-row">
+      <span class="pill gold">Cartas de un solo párrafo</span>
+      <span class="pill gold">Modelos y estilos</span>
+      <span class="pill gold">Márgenes, zonas y partes</span>
+      <span class="pill gold">Plegado de cartas</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BLOQUE 5: DOCUMENTOS ORGANIZACIONALES -->
+  <div class="block-title">
+    <span class="num">05</span>
+    <h2>Producción de Documentos Organizacionales</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Tipos de Documento</h3>
+      <ul>
+        <li>Carta</li>
+        <li>Memorando</li>
+        <li>Circular</li>
+        <li>Correo electrónico</li>
+        <li>Otros documentos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Clasificación y Formato</h3>
+      <ul>
+        <li>Modelos y estilos</li>
+        <li>Requisitos: márgenes, zonas y partes</li>
+        <li>Uso de mayúsculas y minúsculas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Norma NTC 1486</h3>
+      <ul>
+        <li>Presentación de informes</li>
+        <li>Ergonomía: concepto</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BLOQUE 6: TRANSCRIPCIÓN Y CORRECCIÓN -->
+  <div class="block-title">
+    <span class="num">06</span>
+    <h2>Transcripción y Corrección de Textos</h2>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Transcripción</h3>
+      <ul>
+        <li>Concepto</li>
+        <li>Metodologías y normas técnicas colombianas vigentes</li>
+        <li>Transcripción textual</li>
+        <li>Citas textuales, notas y pie de página</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Técnicas de Cotejo</h3>
+      <ul>
+        <li>Concepto y pasos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Técnicas de Observación</h3>
+      <ul>
+        <li>Directa</li>
+        <li>Sistemática</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Corrección de Textos</h3>
+      <ul>
+        <li>Signos de corrección</li>
+        <li>Cotejo de documentos</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<footer>
+  Comunicación, Redacción y Documentación Organizacional &nbsp;·&nbsp; Programa Académico
+</footer>
+
+</body>
+</html>
